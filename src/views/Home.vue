@@ -6,17 +6,13 @@
 
 <script>
 // @ is an alias to /src
+import HelloWorld from '@/views/Home.vue'
 import TopNav from '@/components/home/TopNav.vue'
+
 export default {
-  components: { TopNav },
-    // eslint-disable-next-line vue/multi-word-component-names
-    name: 'home' ,
-    component:{
-        TopNav
-    }
+  name: 'Home',
+  components: {
+    HelloWorld,TopNav
+  }
 }
 </script>
-
-<style>
-
-</style>
