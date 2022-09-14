@@ -21,7 +21,7 @@
 3. 还有很多BUG还没有修改，可能自己知识面不够，完善的进度不如人意
     (注：登录api接口有时候不太正常，所以我注释掉了路由守卫)
 
-首先
+### 首先
 
 ## 安装网易云音乐 NodeJS 版 API
 （地址：https://binaryify.github.io/NeteaseCloudMusicApi/#/）
@@ -61,7 +61,7 @@ windows 下使用 git-bash 或者 cmder 等终端执行以下命令 :
 $ set HOST=127.0.0.1 && node app.js
 ```
 
-然后打开本项目
+### 然后打开本项目
 
 ## Project setup
 ```
