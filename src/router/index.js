@@ -26,13 +26,14 @@ const routes = [
   {
     path: '/info_user',
     name: 'InfoUser',
-    beforeEnter: (to, from, next) => {
-      if (store.state.isLogin && store.state.token && localStorage.getItem('token')) {
-        next()
-      } else {
-        next('/login')
-      }
-    },
+    //接口状态 时好时坏 所以注销掉
+    // beforeEnter: (to, from, next) => {
+    //   if (store.state.isLogin && store.state.token && localStorage.getItem('token')) {
+    //     next()
+    //   } else {
+    //     next('/login')
+    //   }
+    // },
     component: () => import(/* webpackChunkName: "search" */'../views/InfoUser.vue')
   },
 ]
@@ -42,6 +43,7 @@ const router = createRouter({
   routes
 })
 
+//底部组件的显示
 router.beforeEach((to, from) => {
   if (to.path === '/login') {
     store.state.isFooterMusic = false
