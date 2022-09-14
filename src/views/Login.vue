@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { getLoginUser } from "@/request/api/home";
 export default {
   data() {
     return {
@@ -30,14 +31,18 @@ export default {
     };
   },
   methods: {
-    Login() {
-      let res = this.$store.dispatch("getLogin", {
+    async Login() {
+      let res = await this.$store.dispatch("getLogin", {
         phone: this.phone,
         password: this.password,
       });
-      console.log("登录", res);
+      // console.log("登录", res);
       if (res.data.code === 200) {
+        //如果code返回200，则登录成功
         this.$store.commit("/updateIsLogin", true);
+        let result = await getLoginUser(res.data.account.id);
+        this.$store.commit("/updateToken", res.data.token);
+        this.$store.commit("/updateUser", result);
         this.$router.push("/info_user");
       } else {
         res.message;

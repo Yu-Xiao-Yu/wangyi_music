@@ -27,7 +27,7 @@ const routes = [
     path: '/info_user',
     name: 'InfoUser',
     beforeEnter: (to, from, next) => {
-      if (store.state.isLogin) {
+      if (store.state.isLogin && store.state.token && localStorage.getItem('token')) {
         next()
       } else {
         next('/login')
@@ -43,7 +43,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if (to.path == '/login') {
+  if (to.path === '/login') {
     store.state.isFooterMusic = false
   } else {
     store.state.isFooterMusic = true

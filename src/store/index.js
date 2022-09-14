@@ -1,4 +1,4 @@
-import { getLogin } from '@/request/api/home';
+import { getPhoneLogin } from '@/request/api/home';
 import { getMusicLyric } from '@/request/api/item';
 import { createStore } from 'vuex'
 
@@ -25,7 +25,9 @@ export default createStore({
     currentTime: 0,//当前时间
     duration: 0,//歌曲总时长
     isLogin: false,//判断是否登录
-    isFooterMusic: true//判断底部组件是否显示
+    isFooterMusic: true,//判断底部组件是否显示
+    token: "",
+    user: {},//用户信息
   },
   mutations: {
     updateIsbtnShow(state, value) {
@@ -57,6 +59,13 @@ export default createStore({
     updateIsLogin(state, value) {
       state.isLogin = true
     },
+    updateToken(state, value) {
+      state.token = value
+      localStorage.setItem('token', state.token)
+    },
+    updateUser(state, value) {
+      state.user = value
+    }
   },
   actions: {
     async getLyric(context, value) {
@@ -65,7 +74,7 @@ export default createStore({
       context.commit("updateLyricList", res.data.lrc)
     },
     async getLogin(context, value) {
-      let res = await getLogin(value)
+      let res = await getPhoneLogin(value)
       //console.log('登录', res)
       return res
     },
